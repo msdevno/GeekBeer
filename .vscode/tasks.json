@@ -1,0 +1,19 @@
+{
+	"version": "0.1.0",
+	"command": "grunt",
+	"options": {
+		"cwd": "${workspaceRoot}/Web"	
+	},
+	"isShellCommand": true,
+	"tasks": [
+		{
+			"args": [
+				"monitor"
+			],
+			"taskName": "AWESOMEmonitor",
+			"suppressTaskName": true,
+			"isBuildCommand": true,
+			"isWatching": true
+		}
+	]
+}

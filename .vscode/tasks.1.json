@@ -1,0 +1,23 @@
+{
+	"version": "0.1.0",
+	"command": "${workspaceRoot}/Web/node_modules/.bin/babel",
+	"isShellCommand": true,
+	"tasks": [
+		{
+			"args": [
+				"Web/.",
+				"--source-root","Web", 
+				"--optional", "es7.decorators",
+				"--out-dir", 
+				"../wwwroot", "-w", 
+				"--source-maps", "inline", 
+				"--ignore", 
+				"node_modules,output"
+			],
+			"taskName": "watch",
+			"suppressTaskName": true,
+			"isBuildCommand": true,
+			"isWatching": true
+		}
+	]
+}

@@ -1,0 +1,28 @@
+{
+  "name": "DNXSignalR",
+  "version": "0.0.0",
+  "devDependencies": {
+    "babel": "^5.8.23",
+    "chokidar": "^1.2.0",
+    "grunt": "^0.4.5",
+    "grunt-cli": "^0.1.13",
+    "jshint": "^2.8.0",
+    "jspm": "^0.16.12",
+    "rimraf": "2.2.8"
+  },
+  "jspm": {
+    "directories": {
+      "baseURL": "../wwwroot"
+    },
+    "configFile": "config.js",
+    "dependencies": {
+      "jquery": "github:components/jquery@^2.1.4",
+      "knockout": "github:knockout/knockout@^3.3.0"
+    },
+    "devDependencies": {
+      "babel": "npm:babel-core@^5.8.24",
+      "babel-runtime": "npm:babel-runtime@^5.8.24",
+      "core-js": "npm:core-js@^1.1.4"
+    }
+  }
+}
