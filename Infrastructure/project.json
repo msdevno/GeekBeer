@@ -1,0 +1,17 @@
+{
+    "version": "1.0.0-*",
+    "description": "",
+    "authors": [ "" ],
+    "tags": [ "" ],
+    "projectUrl": "",
+    "licenseUrl": "",
+
+    "dependencies": {
+        "Bifrost": "1.0.0.29",
+        "Microsoft.Framework.Runtime": "1.0.0-beta5"
+    },
+
+    "frameworks": {
+        "dnx451": { }
+    }
+}
