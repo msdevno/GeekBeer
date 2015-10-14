@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Domain;
 using Microsoft.AspNet.SignalR;
+using Microsoft.Framework.Logging;
 
 namespace Web
 {
@@ -10,13 +11,18 @@ namespace Web
 	{
 		ITimeline _timeline;
 		
-		public TimelineHub(ITimeline timeline)
+		ILogger _logger;
+		
+		public TimelineHub(ITimeline timeline, ILoggerFactory loggerFactory )
 		{
+			_logger = loggerFactory.CreateLogger(typeof(TimelineHub).Name);
+			_logger.LogInformation("Hub created");
 			_timeline = timeline;
 		}
 		
 		public IEnumerable<Entry> GetAll()
 		{
+			
 			return _timeline.Get();
 		}
 		

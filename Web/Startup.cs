@@ -10,6 +10,7 @@ using Microsoft.Framework.DependencyInjection.Ninject;
 using Microsoft.Framework.Logging;
 using Web.Configuration;
 using Ninject;
+using Microsoft.Framework.Logging.Console;
 
 namespace Web
 {
@@ -18,6 +19,11 @@ namespace Web
         // This method gets called by the runtime.
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
+            //var logger = loggerFactory.CreateLogger(typeof(Program).FullName);
+            
+            //logger.LogInformation("Handled in {ExecutionTime} ms", executionTime);
+            
+                        
             Bifrost.Configuration.Configure.DiscoverAndConfigure(
                 assembliesConfigurationBuilderCallback: builder => builder.IncludeAll().ExceptAssembliesStartingWith("Microsoft"),
                 additionalAssemblyProviders: new[] { new LibraryAssemblyProvider() }
@@ -32,6 +38,13 @@ namespace Web
         // Configure is called after ConfigureServices is called.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
+            
+            loggerFactory.AddConsole(minLevel: LogLevel.Information);
+            
+            var logger = loggerFactory.CreateLogger(typeof(Startup).Name);
+            logger.LogInformation("Starting");
+            
+            
             // Add static files to the request pipeline.
             app.UseStaticFiles();
             

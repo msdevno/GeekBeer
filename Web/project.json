@@ -8,13 +8,15 @@
 
     "Bifrost": "1.0.0.29",
     "Bifrost.Ninject": "1.0.0.29",
+    "Bifrost.JSON": "1.0.0.29",
 
     "Microsoft.AspNet.Diagnostics": "1.0.0-beta5",
     "Microsoft.AspNet.Server.IIS": "1.0.0-beta5",
     "Microsoft.AspNet.Server.Kestrel": "1.0.0-beta5",   
     "Microsoft.AspNet.Server.WebListener": "  1.0.0-beta5",
     "Microsoft.AspNet.StaticFiles": "1.0.0-beta5",
-    "Microsoft.AspNet.SignalR.Server": "3.0.0-beta5",    
+    "Microsoft.AspNet.SignalR.Server": "3.0.0-beta5", 
+    "Microsoft.Framework.Logging.Console": "1.0.0-beta5",   
    
     "Microsoft.Framework.Runtime": "1.0.0-beta5",
     

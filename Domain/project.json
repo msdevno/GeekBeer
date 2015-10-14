@@ -8,7 +8,10 @@
 
     "dependencies": {
         "Bifrost": "1.0.0.29",
-        "WindowsAzure.Storage": "6.0.0"
+        "Microsoft.Framework.Runtime": "1.0.0-beta5",
+        "Microsoft.Framework.Logging": "1.0.0-beta5",
+        "WindowsAzure.Storage": "6.0.0",
+        "System.Net.Http": "4.0.1-beta-23225"
     },
 
     "frameworks": {

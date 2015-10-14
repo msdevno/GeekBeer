@@ -6,7 +6,7 @@ namespace Web.Configuration
     {
         public void Configure(IConfigure configure)
         {
-            
+            configure.Serialization.UsingJson();
         }
     }
 }
