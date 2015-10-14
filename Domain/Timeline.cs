@@ -85,22 +85,6 @@ namespace Domain
             }
         }
 
-        /*	
-
-    function create_sas_token(uri, key_name, key)
-    {
-        // Token expires in 24 hours
-        var expiry = Math.floor(new Date().getTime()/1000+3600*24);
-
-        var string_to_sign = encodeURIComponent(uri) + '\n' + expiry;
-        var hmac = crypto.createHmac('sha256', key);
-        hmac.update(string_to_sign);
-        var signature = hmac.digest('base64');
-        var token = 'SharedAccessSignature sr=' + encodeURIComponent(uri) + '&sig=' + encodeURIComponent(signature) + '&se=' + expiry + '&skn=' + key_name;
-
-        return token;
-    }*/
-
         string GetSasToken(string uri, string keyName, string key)
         {
             var expiry = DateTime.UtcNow.AddHours(24);
@@ -114,27 +98,18 @@ namespace Domain
             _logger.LogInformation("SendEntry");
             var json = _serializer.ToJson(entry);
 
-            //var sas = "SharedAccessSignature sr=https%3a%2f%2fgeekbeer.servicebus.windows.net%2factivity%2fpublishers%2fgeeks%2fmessages&sig=0luHFxJ9XBiS%2b2LkWT7Q%2f4JPM6aDZZ7cueXwZNEYJMs%3d&se=1445185480&skn=Sender";
-            
-            //var sas = "SharedAccessSignature sr=https%3a%2f%2fgeekbeer.servicebus.windows.net%2factivity%2fpublishers%2fgeeks%2fmessages&sig=0M%2bhN2Urczc804QFn7u6%2bmM%2bCD1I5Ck1SzyaTmG%2bCvE%3d&se=1445188432&skn=Sender";
-            
-            //var sas = "SharedAccessSignature sr=https%3a%2f%2fgeekbeer.servicebus.windows.net%2factivity%2fpublishers%2fgeeks%2fmessages&sig=1uyoaB5E5tl%2bzzbZWJqgBytj8gwFJES4XrnBI2N7HTI%3d&se=1445188804&skn=RootManageSharedAccessKey";
             var sas = "SharedAccessSignature sr=https%3a%2f%2fgeekbeer.servicebus.windows.net%2factivity%2fpublishers%2fgeeks%2fmessages&sig=ObuV5d6rW4ytEdTf0s8pCWe9xeKoQtuEi0S3%2fQY0Vps%3d&se=1445188730&skn=Sender";
 
             // Namespace info.
             var serviceNamespace = "geekbeer";
             var hubName = "activity";
             var url = string.Format("{0}/publishers/geeks/messages", hubName);
-            //var url = string.Format("{0}/messages", hubName);
-            // Create client.
             
             _logger.LogInformation("Create client");
             var httpClient = new HttpClient
             {
                 BaseAddress = new Uri(string.Format("https://{0}.servicebus.windows.net/", serviceNamespace))
             };
-
-
 
             _logger.LogInformation("Add authorization");
             httpClient.DefaultRequestHeaders.TryAddWithoutValidation("Authorization", sas);
@@ -157,21 +132,6 @@ namespace Domain
 
             _logger.LogInformation("Response status : "+response.StatusCode);
             _logger.LogInformation("Entry has been sent : " + result);
-
-            /*
-			var content = new StringContent(json);
-			var client = new HttpClient();
-			var response = await client.PostAsync(activityEventHub, content);
-			response.EnsureSuccessStatusCode();
-			
-			var result = await response.Content.ReadAsStringAsync();
-			
-			_logger.LogInformation("Result : "+result);			
-			*/
-            // https://{serviceNamespace}.servicebus.windows.net/{eventHubPath}/messages
-
-            //_activityEventHubClient.Send(eventData);
         }
-
     }
 }
