@@ -25,7 +25,7 @@ namespace Domain
         const string activityEventHubAccessKey = "<ServiceBus Access Key>";
         const string activityEventHub = "https://{namespace}.servicebus.windows.net/{partition}/{eventhub}";
 
-        const string activitySender = "Iy+Y4jtpFzLgUJce1TzEM+TjzpLFa/enx0jJc8PoIR4=";
+        const string activitySender = "<>";
 
         CloudTable _table;
 
@@ -98,12 +98,13 @@ namespace Domain
             _logger.LogInformation("SendEntry");
             var json = _serializer.ToJson(entry);
 
-            var sas = "SharedAccessSignature sr=https%3a%2f%2fgeekbeer.servicebus.windows.net%2factivity%2fpublishers%2fgeeks%2fmessages&sig=ObuV5d6rW4ytEdTf0s8pCWe9xeKoQtuEi0S3%2fQY0Vps%3d&se=1445188730&skn=Sender";
+            // Generate the shared access SAS URL with the tool from the link above
+            var sas = "SharedAccessSignature sr=https%3a%2f%2f{namespace}.servicebus.windows.net%2factivity%2fpublishers%2f{partition}%2f{eventhub}s&sig={key}&skn={name of key}";
 
             // Namespace info.
             var serviceNamespace = "geekbeer";
             var hubName = "activity";
-            var url = string.Format("{0}/publishers/geeks/messages", hubName);
+            var url = string.Format("{0}/publishers/{partition}/{eventhub}", hubName);
             
             _logger.LogInformation("Create client");
             var httpClient = new HttpClient
