@@ -15,15 +15,15 @@ namespace Domain
     [Singleton]
     public class Timeline : ITimeline
     {
-        const string account = "geekbeer";
-        const string primaryAccessKey = "114xdwbWIicO6q32Hd2X2ET1Hb1Q/cHmItQaJmjrUP9H1B45lqG8DIL3di+QYc/FL8beb8JiN1sQ//1AlpsEpQ==";
+        const string account = "<storage access key name>";
+        const string primaryAccessKey = "<storage access key>";
 
-        const string serviceBusConnectionString = "Endpoint=sb://geekbeer.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=oGuDx5nQSCE8V4EE3Ics/JQZCtmqfx3I/7YT5yFSMxk=";
+        const string serviceBusConnectionString = "<serviceBus ConnectionString>";
 
 
-        const string activityEventHubAccessKeyName = "RootManageSharedAccessKey";
-        const string activityEventHubAccessKey = "oGuDx5nQSCE8V4EE3Ics/JQZCtmqfx3I/7YT5yFSMxk=";
-        const string activityEventHub = "https://geekbeer.servicebus.windows.net/activity/messages";
+        const string activityEventHubAccessKeyName = "RootManageSharedAccessKey"; // Name of access key name
+        const string activityEventHubAccessKey = "<ServiceBus Access Key>";
+        const string activityEventHub = "https://{namespace}.servicebus.windows.net/{partition}/{eventhub}";
 
         const string activitySender = "Iy+Y4jtpFzLgUJce1TzEM+TjzpLFa/enx0jJc8PoIR4=";
 
